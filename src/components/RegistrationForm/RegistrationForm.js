@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import  "./registrationForm.css";
+import "./registrationForm.css";
 
 function RegistrationForm() {
-	const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     age: "",
     email: "",
-    phoneNumber: ""
+    phoneNumber: "",
   });
-	const updateFormData = event =>
-	setFormData({
-		...formData,
-		[event.target.name]: event.target.value
-	});
+  const updateFormData = (event) =>
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
   const { name, age, email, phoneNumber } = formData;
 
-	const submitForm = (event) => {
-		event.preventDefault()
-		window.location.href = `http://localhost:3000/Dashboard?name=${name}&age=${age}&email=${email}&phoneNumber=${phoneNumber}`;
-	}
-
+  const submitForm = (event) => {
+    event.preventDefault();
+    window.location.href = `http://localhost:3000/Dashboard?name=${name}&age=${age}&email=${email}&phoneNumber=${phoneNumber}`;
+  };
 
   return (
-    <form onSubmit={submitForm} >
+    <form onSubmit={submitForm}>
       <input
         value={name}
-        onChange={e => updateFormData(e)}
+        onChange={(e) => updateFormData(e)}
         placeholder="Name"
         type="text"
         name="name"
@@ -33,7 +32,7 @@ function RegistrationForm() {
       />
       <input
         value={age}
-        onChange={e => updateFormData(e)}
+        onChange={(e) => updateFormData(e)}
         placeholder="Age"
         type="number"
         name="age"
@@ -42,7 +41,7 @@ function RegistrationForm() {
       />
       <input
         value={email}
-        onChange={e => updateFormData(e)}
+        onChange={(e) => updateFormData(e)}
         placeholder="Email address"
         type="email"
         name="email"
@@ -50,7 +49,7 @@ function RegistrationForm() {
       />
       <input
         value={phoneNumber}
-        onChange={e => updateFormData(e)}
+        onChange={(e) => updateFormData(e)}
         placeholder="Phone number"
         type="number"
         name="phoneNumber"
