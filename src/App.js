@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="container">
       <Route path="/">
+        <div className="formHolder">
         <RegistrationForm />
+        </div>
       </Route>
       <Route path="/Dashboard">
         <Dashboard />

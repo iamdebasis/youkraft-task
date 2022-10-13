@@ -22,7 +22,7 @@ function RegistrationForm() {
 
 
   return (
-    <form onSubmit={submitForm}>
+    <form onSubmit={submitForm} >
       <input
         value={name}
         onChange={e => updateFormData(e)}
@@ -37,6 +37,7 @@ function RegistrationForm() {
         placeholder="Age"
         type="number"
         name="age"
+        min="18"
         required
       />
       <input
@@ -53,9 +54,10 @@ function RegistrationForm() {
         placeholder="Phone number"
         type="number"
         name="phoneNumber"
+        min="1000000000"
+        max="9999999999"
         required
       />
-
       <button type="submit">Submit</button>
     </form>
   );

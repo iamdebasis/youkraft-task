@@ -1,4 +1,15 @@
 
+  form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--expo-theme-background-default);
+    border: 1px solid var(--expo-theme-border-default);
+    border-radius: 10px;
+    box-shadow: var(--expo-theme-shadows-small);
+    margin-bottom: 32px;
+    padding: 24px;
+  }
   input {
     display: block;
     min-width: 90%;
@@ -17,6 +28,8 @@
   
   button {
     margin: 0.8em;
+    margin-top: 2em;
+    margin-bottom: 0;
     padding: 1em;
     border: 1px solid #e4e6e8;
     border-radius: 5px;
