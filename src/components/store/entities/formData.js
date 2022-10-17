@@ -1,62 +1,47 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import * as action from "../api";
 
 const initialState = {
-  listingItems: [],
-
+  userData: {},
+  homepage: "form",
 };
 
 export const slice = createSlice({
   name: "formData",
   initialState,
   reducers: {
-    testDetailsReceive: (home, { payload }) => {
-
-      home.loading = false;
+    updatedFormData: (formData, { payload }) => {
+      formData.userData = payload;
     },
-    testsRequested: (home, { payload }) => {
-      home.loading = true;
+    updatedPage: (formData, { payload }) => {
+      formData.homepage = payload.page;
     },
-    testsRequestFailed: (home, { payload }) => {
-      home.loading = false;
-    },
-
-
   },
 });
-export const searchItem = (value) => (dispatch) => {
+export const setUserData = (value) => (dispatch) => {
   dispatch({
-    type: searchItemInList.type,
+    type: updatedFormData.type,
+    payload: value,
+  });
+};
+export const setHomePage = (value) => (dispatch) => {
+  dispatch({
+    type: updatedPage.type,
     payload: value,
   });
 };
 
 // Action creators
-const { testDetailsReceive, testsRequested, testsRequestFailed, addToCart, decreaseCount, increaseCount, updatePage, filter, deleteItem, searchItemInList, filterSec } = slice.actions;
-
-export const loadItems = () => (dispatch, getState) => {
-  return dispatch(
-    action.apiCallBegan({
-      url: `https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json`,
-      onStart: testsRequested.type,
-      onError: testsRequestFailed.type,
-      onSuccess: testDetailsReceive.type,
-    })
-  );
-};
+const { updatedFormData, updatedPage } = slice.actions;
 
 //selectors
-export const getFilteredGender = createSelector(
-  (state) => state.entities.home,
-  (filteredGender) => filteredGender?.filteredGender
+export const getUserData = createSelector(
+  (state) => state.entities.formReducer,
+  (userData) => userData.userData
 );
-
-export const getFilteredTypes = createSelector(
-  (state) => state.entities.home,
-  (filteredTypes) => filteredTypes?.filteredTypes
+export const getHomePage = createSelector(
+  (state) => state.entities.formReducer,
+  (homepage) => homepage.homepage
 );
-
-
 
 export default slice.reducer;

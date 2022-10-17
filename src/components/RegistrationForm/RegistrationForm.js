@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setHomePage, setUserData } from "../store/entities/formData";
 import "./registrationForm.css";
 
 function RegistrationForm() {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -17,7 +21,15 @@ function RegistrationForm() {
 
   const submitForm = (event) => {
     event.preventDefault();
-    window.location.href = `http://localhost:3000/Dashboard?name=${name}&age=${age}&email=${email}&phoneNumber=${phoneNumber}`;
+    let userData = {
+      name: name,
+      age: age,
+      email: email,
+      phoneNumber: phoneNumber,
+    };
+    dispatch(setUserData(userData));
+    dispatch(setHomePage({ page: "dash" }));
+    // window.location.href = `http://localhost:3000/Dashboard?name=${name}&age=${age}&email=${email}&phoneNumber=${phoneNumber}`;
   };
 
   return (

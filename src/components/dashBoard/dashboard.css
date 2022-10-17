@@ -16,3 +16,20 @@
     display: flex;
     align-items: center;
   }
+  .back-arrow{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+  .back-container{
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    background: gainsboro;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .container{
+    margin-left: 20px;
+  }
